@@ -6,7 +6,6 @@ createApp({
     const novaTarefa = ref('');
     const tarefas = ref([]);
 
-
     const adicionar = () => {
       if (novaTarefa.value.trim() !== '') {
         tarefas.value.push({
@@ -18,16 +17,13 @@ createApp({
       }
     };
 
-
     const remover = (index) => {
       tarefas.value.splice(index, 1);
     };
 
-
     const alternarConcluida = (index) => {
       tarefas.value[index].concluida = !tarefas.value[index].concluida;
     };
-
 
     return {
       novaTarefa,
