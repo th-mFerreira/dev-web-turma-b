@@ -1,119 +1,112 @@
 <template>
-  <div>
-    <form id="pedido-form" @submit="criarPedido($event)">
-
-      <div
-  v-if="mensagem"
-  class="alerta"
-  :class="tipoMensagem"
->
+  <div class="pedido-wrapper">
+    <form id="pedido-form" @submit="criarPedido">
+      <div v-if="mensagem" class="alerta" :class="tipoMensagem">
+        <span>{{ iconeMensagem }}</span>
         {{ mensagem }}
       </div>
 
-      <div>
-        <p id="nome-hamburguer-content">
-          {{ burguer && burguer.nome ? burguer.nome : "--" }}
-        </p>
-
+      <div class="pizza-destaque">
         <img
           id="foto-content"
           :src="burguer && burguer.foto ? burguer.foto : ''"
+          :alt="burguer && burguer.nome ? burguer.nome : 'Pizza selecionada'"
         />
-      </div>
 
-      <div class="inputs" id="form-pedido">
-        <label>Nome do Cliente</label>
+        <div class="pizza-info">
+          <p id="nome-hamburguer-content">
+            {{ burguer && burguer.nome ? burguer.nome : "Selecione uma pizza" }}
+          </p>
 
-        <input
-          v-model="nomeCliente"
-          type="text"
-          placeholder="Digite seu nome"
-          id="nome-cliente"
-        />
-      </div>
-
-      <div class="inputs">
-        <label>Tipo de Massa</label>
-
-        <select
-          v-model="pontoCarneSelecionado"
-          id="ponto-carne"
-        >
-          <option value="">
-            Selecione a massa
-          </option>
-
-          <option
-            v-for="pontoCarne in listaPontosCarne"
-            :key="pontoCarne.id"
-            :value="pontoCarne"
-          >
-            {{ pontoCarne.descricao }}
-          </option>
-        </select>
-      </div>
-
-      <div class="inputs">
-
-        <label id="opcionais-titulo">
-          Adicionais
-        </label>
-
-        <label id="opcionais-subtitulo">
-          Escolha os adicionais da pizza
-        </label>
-
-        <div
-          v-for="complemento in listaComplementos"
-          :key="complemento.id"
-          class="checkbox-container"
-        >
-          <input
-            type="checkbox"
-            :name="complemento.nome"
-            :value="complemento"
-            v-model="listaComplementosSelecionados"
-          />
-
-          <span>
-            {{ complemento.nome }}
-          </span>
-
+          <p v-if="burguer && burguer.valor" class="preco-pizza">
+            R$ {{ burguer.valor }},00
+          </p>
         </div>
+      </div>
 
-        <label>Bebidas</label>
-
-        <div
-          v-for="bebida in listaBebidas"
-          :key="bebida.id"
-          class="checkbox-container"
-        >
+      <div class="form-card">
+        <div class="inputs">
+          <label>Nome do Cliente</label>
           <input
-            type="checkbox"
-            :name="bebida.nome"
-            :value="bebida"
-            v-model="listaBebidasSelecionadas"
+            v-model="nomeCliente"
+            type="text"
+            placeholder="Digite seu nome"
+            id="nome-cliente"
           />
-
-          <span>
-            {{ bebida.nome }}
-          </span>
-
         </div>
 
         <div class="inputs">
-          <input
-            type="submit"
-            class="submit-btn"
-            value="Confirmar Pedido"
-          />
+          <label>Tipo de Massa</label>
+          <select v-model="pontoCarneSelecionado" id="ponto-carne">
+            <option value="">Selecione a massa</option>
+
+            <option
+              v-for="pontoCarne in listaPontosCarne"
+              :key="pontoCarne.id"
+              :value="pontoCarne"
+            >
+              {{ pontoCarne.descricao }}
+            </option>
+          </select>
         </div>
 
-      </div>
+        <div class="inputs">
+          <label>Adicionais</label>
+          <p class="descricao-grupo">Escolha os adicionais da pizza</p>
 
+          <div class="opcoes-grid">
+            <div
+              v-for="complemento in listaComplementos"
+              :key="complemento.id"
+              class="checkbox-container"
+            >
+              <input
+                type="checkbox"
+                :id="'complemento-' + complemento.id"
+                :name="complemento.nome"
+                :value="complemento"
+                v-model="listaComplementosSelecionados"
+              />
+
+              <label :for="'complemento-' + complemento.id" class="checkbox-label">
+                {{ complemento.nome }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="inputs">
+          <label>Bebidas</label>
+
+          <div class="opcoes-grid">
+            <div
+              v-for="bebida in listaBebidas"
+              :key="bebida.id"
+              class="checkbox-container"
+            >
+              <input
+                type="checkbox"
+                :id="'bebida-' + bebida.id"
+                :name="bebida.nome"
+                :value="bebida"
+                v-model="listaBebidasSelecionadas"
+              />
+
+              <label :for="'bebida-' + bebida.id" class="checkbox-label">
+                {{ bebida.nome }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="inputs">
+          <input type="submit" class="submit-btn" value="Confirmar Pedido" />
+        </div>
+      </div>
     </form>
   </div>
 </template>
+
 <script>
 export default {
   name: "PedidoComponent",
@@ -139,6 +132,16 @@ export default {
     };
   },
 
+  computed: {
+    iconeMensagem() {
+      if (this.tipoMensagem === "sucesso") return "✅";
+      if (this.tipoMensagem === "erro") return "❌";
+      if (this.tipoMensagem === "aviso") return "⚠️";
+      if (this.tipoMensagem === "info") return "ℹ️";
+      return "";
+    },
+  },
+
   methods: {
     async getTiposPontos() {
       const response = await fetch(`${this.$apiUrl}/tipos_pontos`);
@@ -157,37 +160,23 @@ export default {
     mostrarMensagem(texto, tipo) {
       this.mensagem = texto;
       this.tipoMensagem = tipo;
-
-      setTimeout(() => {
-        this.mensagem = "";
-        this.tipoMensagem = "";
-      }, 3000);
     },
 
     async criarPedido(e) {
       e.preventDefault();
 
-      if (!this.nomeCliente.trim()) {
-        this.mostrarMensagem(
-          "Informe o nome do cliente.",
-          "erro"
-        );
+      if (!this.burguer) {
+        this.mostrarMensagem("Selecione uma pizza no cardápio antes de confirmar o pedido.", "aviso");
         return;
       }
 
-      if (!this.burguer) {
-        this.mostrarMensagem(
-          "Selecione uma pizza.",
-          "erro"
-        );
+      if (!this.nomeCliente.trim()) {
+        this.mostrarMensagem("Informe o nome do cliente.", "erro");
         return;
       }
 
       if (!this.pontoCarneSelecionado) {
-        this.mostrarMensagem(
-          "Selecione o tipo de massa.",
-          "erro"
-        );
+        this.mostrarMensagem("Selecione o tipo de massa.", "erro");
         return;
       }
 
@@ -208,10 +197,7 @@ export default {
         body: JSON.stringify(dadosPedido),
       });
 
-      this.mostrarMensagem(
-        "Pedido realizado com sucesso!",
-        "sucesso"
-      );
+      this.mostrarMensagem("Pedido realizado com sucesso! Redirecionando para a lista de pedidos.", "sucesso");
 
       this.nomeCliente = "";
       this.pontoCarneSelecionado = "";
@@ -220,7 +206,7 @@ export default {
 
       setTimeout(() => {
         this.$router.push("/pedidos");
-      }, 1200);
+      }, 1400);
     },
   },
 
@@ -232,114 +218,158 @@ export default {
 </script>
 
 <style scoped>
-#foto-content {
-  margin-bottom: 16px;
-  border-radius: 16px;
-  position: relative;
-  z-index: -1;
-  justify-content: center;
+.pedido-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+#pedido-form {
   width: 100%;
-  height: 180px;
+}
+
+.pizza-destaque {
+  position: relative;
+  margin-bottom: 24px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+#foto-content {
+  display: block;
+  width: 100%;
+  height: 260px;
   object-fit: cover;
 }
 
-#nome-hamburguer-content {
-  font-size: 43px;
-  font-weight: bold;
-  text-align: start;
-  margin-bottom: -90px;
-  margin-left: 40px;
-  color: antiquewhite;
-  padding: 16px;
+.pizza-info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.15));
 }
 
-#form-pedido {
-  max-width: 750px;
-  margin: 0 auto;
+#nome-hamburguer-content {
+  margin: 0;
+  color: #fff;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.preco-pizza {
+  margin: 8px 0 0;
+  color: #ffd54f;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.form-card {
+  background: #fff;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
 }
 
 .inputs {
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  margin-bottom: 22px;
 }
 
 label {
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   color: #222;
   padding: 5px 12px;
-  flex-direction: start;
   display: flex;
-  border-left: 4px solid darkgoldenrod;
+  border-left: 4px solid #c62828;
 }
 
 input,
 select {
   padding: 12px;
-  width: 300px;
+  width: 100%;
+  max-width: 420px;
   border: solid #222 1px;
   border-radius: 8px;
-  height: 20px;
-  font-size: 12px;
+  font-size: 15px;
+  box-sizing: border-box;
 }
 
 select {
-  height: 45px;
+  height: 46px;
+  background: white;
 }
 
-#opcionais-titulo {
-  width: 100%;
+.descricao-grupo {
+  margin: -4px 0 14px;
+  color: #555;
+  font-size: 14px;
 }
 
-#opcionais-subtitulo {
+.opcoes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+}
+
+.checkbox-container {
   display: flex;
-  align-items: flex-start;
-  align-content: center;
-  width: 100%;
-  margin-bottom: 12px;
+  align-items: center;
+  gap: 10px;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
 }
 
-.checkbox-container span {
-  margin-left: 6px;
-  font-weight: bold;
-}
-
-.checkbox-container span,
 .checkbox-container input {
   width: auto;
-  height: 20px;
+  max-width: none;
+  height: auto;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-weight: bold;
+  color: #222;
+  cursor: pointer;
 }
 
 .submit-btn {
   background-color: #222;
-  color: darkgoldenrod;
+  color: #ffd54f;
   font-weight: bold;
   border: none;
   font-size: 18px;
   border-radius: 12px;
   padding: 16px;
-  margin: 0 auto;
+  margin-top: 8px;
   cursor: pointer;
   width: 100%;
+  max-width: none;
   height: auto;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 .submit-btn:hover {
-  background-color: darkgoldenrod;
-  color: #222;
+  background-color: #c62828;
+  color: #fff;
 }
-</style>
-
-/* ================= ALERTAS ================= */
 
 .alerta {
   width: 100%;
-  padding: 16px;
-  margin: 20px auto;
+  padding: 16px 18px;
+  margin: 0 0 20px;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
   text-align: center;
   box-sizing: border-box;
@@ -362,3 +392,18 @@ select {
 .info {
   background: #1565c0;
 }
+
+@media (max-width: 700px) {
+  #foto-content {
+    height: 200px;
+  }
+
+  #nome-hamburguer-content {
+    font-size: 28px;
+  }
+
+  .form-card {
+    padding: 18px;
+  }
+}
+</style>

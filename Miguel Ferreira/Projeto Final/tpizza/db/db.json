@@ -45,43 +45,6 @@
   ],
   "pedidos": [
     {
-      "nome": "Miguel (Teste)",
-      "ponto": {
-        "id": 3,
-        "descricao": "Recheada"
-      },
-      "bebidas": [
-        {
-          "id": 1,
-          "nome": "Coca-Cola Lata 350ml",
-          "descricao": "",
-          "foto": "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=400",
-          "valor": 7,
-          "eh_novidade": false
-        }
-      ],
-      "complemento": [
-        {
-          "id": 2,
-          "nome": "Cheddar Extra",
-          "descricao": "Adicione cheddar na borda",
-          "foto": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400",
-          "valor": 8,
-          "eh_novidade": false
-        }
-      ],
-      "burguer": {
-        "id": 1,
-        "nome": "Pizza Calabresa",
-        "foto": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800",
-        "descricao": "Molho de tomate, mussarela, calabresa, cebola e orégano.",
-        "valor": 49,
-        "eh_novidade": true
-      },
-      "statusId": 5,
-      "id": 2
-    },
-    {
       "nome": "Miguel [teste]",
       "ponto": {
         "id": 3,
@@ -186,7 +149,7 @@
       {
         "id": 1,
         "nome": "Pizza Especial da Casa",
-        "foto": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800",
+        "foto": "/img/Especial-da-Casa.jpg",
         "descricao": "Molho especial, mussarela, pepperoni, parmesão e manjericão.",
         "valor": 65,
         "eh_novidade": true
@@ -196,7 +159,7 @@
       {
         "id": 1,
         "nome": "Pizza Calabresa",
-        "foto": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800",
+        "foto": "/img/Calabresa.jpg",
         "descricao": "Molho de tomate, mussarela, calabresa, cebola e orégano.",
         "valor": 49,
         "eh_novidade": true
@@ -204,7 +167,7 @@
       {
         "id": 2,
         "nome": "Pizza Portuguesa",
-        "foto": "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=800",
+        "foto": "/img/Portuguesa.png",
         "descricao": "Presunto, ovos, cebola, ervilha, mussarela e orégano.",
         "valor": 55,
         "eh_novidade": true
@@ -212,7 +175,7 @@
       {
         "id": 3,
         "nome": "Pizza Margherita",
-        "foto": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800",
+        "foto": "/img/Margherita.jpg",
         "descricao": "Molho de tomate, mussarela, tomate, manjericão e azeite.",
         "valor": 48,
         "eh_novidade": false
@@ -220,7 +183,7 @@
       {
         "id": 4,
         "nome": "Pizza Frango com Catupiry",
-        "foto": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800",
+        "foto": "/img/Frango-com-Catupiry.jpg",
         "descricao": "Frango desfiado, Catupiry, mussarela e orégano.",
         "valor": 58,
         "eh_novidade": true
@@ -228,7 +191,7 @@
       {
         "id": 5,
         "nome": "Pizza Quatro Queijos",
-        "foto": "https://images.unsplash.com/photo-1548365328-9f547fb0953d?w=800",
+        "foto": "/img/Quatro-Queijos.jpg",
         "descricao": "Mussarela, parmesão, provolone, gorgonzola e orégano.",
         "valor": 60,
         "eh_novidade": true
@@ -236,7 +199,7 @@
       {
         "id": 6,
         "nome": "Pizza Pepperoni",
-        "foto": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800",
+        "foto": "/img/Pepperoni.jpg",
         "descricao": "Molho de tomate, mussarela, pepperoni e parmesão.",
         "valor": 59,
         "eh_novidade": false
@@ -244,7 +207,7 @@
       {
         "id": 7,
         "nome": "Pizza Vegetariana",
-        "foto": "https://images.unsplash.com/photo-1604382355076-af4b0eb60143?w=800",
+        "foto": "/img/Vegetariana.jpg",
         "descricao": "Brócolis, tomate, milho, cebola roxa, azeitonas e mussarela.",
         "valor": 54,
         "eh_novidade": false
