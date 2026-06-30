@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+    <html lang="pt-br">
+        <head>
+            <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+                <title>Image Hide</title>
+                <style>
+                    body{
+                    background-color: rgb(0, 0, 0);
+                    color:white;
+                    text-align:center;
+                    font-family:Arial;
+                    padding-top:50px;
+                    display:flex;
+                    flex-direction:column;
+                    align-items:center;     
+                    }
+
+                    img{
+                    width:400px;
+                    margin:20px;
+                    }
+
+                    button{
+                    padding:10px 20px;
+                    font-size:16px;
+                    cursor:pointer;
+                    }
+                </style>
+        </head>
+        <body>
+            <h2>Escondendo imagem</h2>
+            <img id="minhaImagem" src="https://i.pinimg.com/564x/fc/e2/74/fce2740d6f3fe82e8d934d1d67169a4b.jpg">
+                <br>
+                    <button onclick="alternarImagem()">Clique aqui</button>
+                    <script>
+                        function alternarImagem(){
+                            const img = document.getElementById("minhaImagem");
+                            if(img.style.display === "none"){
+                            img.style.display = "block";
+                            }
+                                            else{
+                                                    img.style.display = "none";
+                            }
+                        }
+                    </script>
+        </body>
+    </html>

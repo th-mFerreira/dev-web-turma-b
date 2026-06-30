@@ -1,0 +1,110 @@
+{
+  "tipos_pontos": [
+    {
+      "id": "1",
+      "descricao": "Modelo Torcedor (Padrão)"
+    },
+    {
+      "id": "2",
+      "descricao": "Modelo Jogador (Slim Fit)"
+    },
+    {
+      "id": "3",
+      "descricao": "Manga Longa"
+    },
+    {
+      "id": "4",
+      "descricao": "Tamanho Infantil"
+    }
+  ],
+  "status_pedido": [
+    {
+      "id": "1",
+      "descricao": "Pedido em Análise"
+    },
+    {
+      "id": "2",
+      "descricao": "Estampando Personalização"
+    },
+    {
+      "id": "3",
+      "descricao": "Pronto para Envio"
+    },
+    {
+      "id": "4",
+      "descricao": "Enviado / Em Trânsito"
+    },
+    {
+      "id": "5",
+      "descricao": "Entregue"
+    }
+  ],
+  "pedidos": [],
+  "opcionais": {
+    "complemento": [
+      {
+        "id": 1,
+        "nome": "Patch Champions League",
+        "valor": 25
+      },
+      {
+        "id": 2,
+        "nome": "Patch Copa do Mundo",
+        "valor": 25
+      },
+      {
+        "id": 3,
+        "nome": "Nome e Número nas costas",
+        "valor": 40
+      }
+    ],
+    "bebidas": [
+      {
+        "id": 1,
+        "nome": "Embalagem de Plástico Padrão",
+        "valor": 0
+      },
+      {
+        "id": 2,
+        "nome": "Caixa de Luxo Colecionador",
+        "valor": 35
+      },
+      {
+        "id": 3,
+        "nome": "Embalagem para Presente",
+        "valor": 15
+      }
+    ]
+  },
+  "menu": {
+    "limitado": [
+      {
+        "id": 1,
+        "nome": "Brasil 1970 - Pelé",
+        "foto": "https://lojadocapita.com.br/produtos/camisa-real-madrid-2002-2003-home/",
+        "descricao": "A lendária camisa do Tri, usada por Pelé. Tecido retrô em algodão macio com escudo bordado em alta definição.",
+        "valor": 299,
+        "eh_novidade": true
+      }
+    ],
+    "burgues": [
+      {
+        "id": 1,
+        "nome": "Real Madrid 2002",
+        "foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF4NqdIK5oPXrt_8Hs811NPLrdiemJve0bpocuLHkITkeaUi05vMWMqAXH&s=10",
+        "descricao": "A clássica camisa branca dos Galácticos (Zidane, Ronaldo, Figo). Gola polo e detalhes em preto.",
+        "valor": 250,
+        "eh_novidade": false
+      },
+      {
+        "id": 2,
+        "nome": "Milan 2007",
+        "foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRix42UkhZxrKCar6Rl0cCpc2dB6RRrTWdj1bk9C5tOOA&s=10",
+        "descricao": "O manto rubro-negro da consagração de Kaká. Listras tradicionais e tecido tecnológico da época.",
+        "valor": 230,
+        "eh_novidade": false
+      }
+    ]
+  },
+  "$schema": "./node_modules/json-server/schema.json"
+}
