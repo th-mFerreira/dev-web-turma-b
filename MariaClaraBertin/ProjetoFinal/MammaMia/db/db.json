@@ -1,0 +1,170 @@
+{
+  "tipos_tamanhos": [
+    {
+      "id": 1,
+      "descricao": "Brotinho"
+    },
+    {
+      "id": 2,
+      "descricao": "Média"
+    },
+    {
+      "id": 3,
+      "descricao": "Grande"
+    },
+    {
+      "id": 4,
+      "descricao": "Gigante"
+    }
+  ],
+  "status_pedido": [
+    {
+      "id": 1,
+      "descricao": "Pedido em espera"
+    },
+    {
+      "id": 2,
+      "descricao": "No forno (Em produção)"
+    },
+    {
+      "id": 3,
+      "descricao": "A caminho (Delivery)"
+    },
+    {
+      "id": 4,
+      "descricao": "Entregue"
+    },
+    {
+      "id": 5,
+      "descricao": "Pedido pendente"
+    },
+    {
+      "id": 6,
+      "descricao": "Pedido realizado"
+    }
+  ],
+  "pedidos": [
+    {
+      "id": 1,
+      "nome": "Maria Clara",
+      "tamanho": {
+        "id": 3,
+        "descricao": "Grande"
+      },
+      "pizza": {
+        "id": 1,
+        "nome": "Margherita Especial",
+        "descricao": "Molho de tomate artesanal, muçarela de búfala, rodelas de tomate fresco, manjericão orgânico e um fio de azeite extra virgem.",
+        "valor": 45,
+        "eh_novidade": false
+      },
+      "bebidas": [
+        {
+          "id": 1,
+          "nome": "Coca Cola Lata 310 ml",
+          "valor": 6
+        }
+      ],
+      "complemento": [
+        {
+          "id": 1,
+          "nome": "Borda Recheada de Catupiry",
+          "valor": 8
+        }
+      ],
+      "statusId": 6
+    }
+  ],
+  "opcionais": {
+    "complemento": [
+      {
+        "id": 1,
+        "nome": "Borda Recheada de Catupiry",
+        "descricao": "Borda tradicional da casa recheada com Catupiry original",
+        "foto": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=150",
+        "valor": 8,
+        "eh_novidade": false
+      },
+      {
+        "id": 2,
+        "nome": "Borda Recheada de Chocolate",
+        "descricao": "Borda doce com chocolate ao leite Nestlé",
+        "foto": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=150",
+        "valor": 10,
+        "eh_novidade": true
+      }
+    ],
+    "bebidas": [
+      {
+        "id": 1,
+        "nome": "Coca Cola Lata 310 ml",
+        "descricao": "",
+        "foto": "https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/itens/1696431408651d7d30645b9_75_75.jpeg",
+        "valor": 6,
+        "eh_novidade": false
+      },
+      {
+        "id": 2,
+        "nome": "Guaraná Antarctica Lata 350 ml",
+        "descricao": "",
+        "foto": "https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/itens/1696431434651d7d4a1e285_75_75.jpeg",
+        "valor": 6,
+        "eh_novidade": false
+      },
+      {
+        "id": 3,
+        "nome": "Água Mineral Sem Gás 500 ml",
+        "descricao": "",
+        "foto": "https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/itens/1696431455651d7d5fd3661_75_75.jpeg",
+        "valor": 4,
+        "eh_novidade": false
+      }
+    ]
+  },
+  "menu": {
+    "limitado": [
+      {
+        "id": 1,
+        "nome": "Mamma Mia Suprema",
+        "foto": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=150",
+        "descricao": "Nossa receita secreta! Molho rústico, muçarela, pepperoni artesanal, cogumelos frescos Paris salteados no vinho branco e finalizado com rúcula fresca.",
+        "valor": 55,
+        "eh_novidade": true
+      }
+    ],
+    "pizzas": [
+      {
+        "id": 1,
+        "nome": "Margherita Especial",
+        "foto": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=150",
+        "descricao": "Molho de tomate artesanal, muçarela de búfala, rodelas de tomate fresco, manjericão orgânico e um fio de azeite extra virgem.",
+        "valor": 45,
+        "eh_novidade": false
+      },
+      {
+        "id": 2,
+        "nome": "Calabresa Artesanal",
+        "foto": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=150",
+        "descricao": "Molho de tomate, muçarela, calabresa defumada de alta qualidade e cebola roxa marinada.",
+        "valor": 42,
+        "eh_novidade": false
+      },
+      {
+        "id": 3,
+        "nome": "Quatro Formaggi",
+        "foto": "https://images.unsplash.com/photo-1573821663912-569905455b1c?w=150",
+        "descricao": "Combinação perfeita de muçarela, provolone, gorgonzola premium e catupiry original.",
+        "valor": 48,
+        "eh_novidade": true
+      },
+      {
+        "id": 4,
+        "nome": "Frango com Catupiry",
+        "foto": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=150",
+        "descricao": "Frango desfiado artesanalmente, temperado com ervas finas e uma camada generosa de Catupiry.",
+        "valor": 44,
+        "eh_novidade": false
+      }
+    ]
+  }
+}
